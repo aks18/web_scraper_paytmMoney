@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-import pandas as pd
 import requests, json, re, time
 import pickle as pkl
 
@@ -33,7 +32,7 @@ url_list = [
 
 main_dict = {}
 
-for idx in range(len(url_list)):
+for idx in range(10000, len(url_list)):
     url = url_list[idx]
     # Initialization
     fund_name = url.split('/')[5]
@@ -64,6 +63,6 @@ for idx in range(len(url_list)):
     main_dict[fund_name]['sectors'] = sectors_dict
     main_dict[fund_name]['companies'] = companies_dict
 
-with open('/home/shitbot009/Documents/algo_trading/web_scraping/data/extracted_dict.pkl', 'wb') as f:
-    pkl.dump(main_dict, f)
-    f.close()
+    with open('data/extracted_dict.pkl', 'wb') as f:
+        pkl.dump(main_dict, f)
+        f.close()
